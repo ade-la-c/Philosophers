@@ -6,7 +6,7 @@
 #    By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/05 19:35:02 by ade-la-c          #+#    #+#              #
-#    Updated: 2021/10/09 13:12:26 by ade-la-c         ###   ########.fr        #
+#    Updated: 2021/10/11 12:36:08 by ade-la-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS				= srcs/main.c \
 					srcs/actions.c \
 					srcs/threading.c \
 					srcs/print.c \
+					# srcs/routines.c \
 
 OBJS				= $(SRCS:.c=.o)
 

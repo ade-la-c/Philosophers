@@ -6,32 +6,19 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 23:53:14 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/09 12:55:41 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/11 19:00:27 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosopher.h"
 
-// marche pas D:
-
-// void	print(t_data *data, long long utime, int philo, char *action)
-// {
-// 	int		i;
-// 	int		j;
-// 	char *str;
-
-// 	i = -1;
-// 	j = 0;
-// 	// printf(" string : %s\n", data->print_buf);
-// 	str = ft_itoa(utime);
-// 	i = ft_strlen(data->print_buf) + 1;
-// 	data->print_buf[i++] = ' ';
-// 	ft_itoa(philo);
-// 	i = ft_strlen(data->print_buf) + 1;
-// 	while (action[j])
-// 		data->print_buf[i++] = action[j++];
-// 	// write(1, data->print_buf, ft_strlen(data->print_buf));
-// }
+int	ft_usleep(long utime)
+{
+	usleep(utime - (utime / 4));
+	usleep(utime / 8);
+	usleep(utime / 8);
+	return (0);
+}
 
 int	even_or_odd(int i)
 {
@@ -50,7 +37,7 @@ long	get_utime(long start_utime)
 		return (0);
 	utime = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
 	utime -= start_utime;
-	return (utime);		// start_utime = 0 to get timeofday
+	return (utime);
 }
 
 int	ft_atoi(const char *str)

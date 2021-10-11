@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:57 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/11 11:13:46 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/11 17:44:15 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_philo
 	int				times_eated;
 	long 			last_sleep;			// last time philo slept
 	int				is_alive;
-	pthread_mutex_t	mutex;
+	pthread_mutex_t	print_mutex;
 }	t_philo;
 
 typedef struct s_data
@@ -42,7 +42,7 @@ typedef struct s_data
 	int				time_to_sleep;
 	int				times_must_eat;
 	long 			start_utime;		// time of start of simulation (usec)
-	int				*forks;
+	pthread_mutex_t	*forks;
 	t_philo			*ph;
 	char			*print_buf;
 	int				buf_len;
@@ -59,8 +59,9 @@ typedef struct s_arg
 
 //=============UTILS=============//
 
+int					ft_usleep(long utime);
 void				*ft_calloc(size_t count, size_t size);
-void				print(t_data *data, long utime, int philo, char *action);
+void				print(t_data *data, int philo, char *action);
 int					even_or_odd(int i);
 long 				get_utime(long utime_of_start);
 int					ft_atoi(const char *str);
@@ -72,11 +73,14 @@ char				*ft_itoa(int n);
 
 int					init_pthread(t_data *data);
 void				*philo_routine(void *ptr);
+// int					even_routine(t_data *data, t_philo *ph);
+// int					odd_routine(t_data *data, t_philo *ph);
 
 //============ACTIONS============//
 
 int					thinks(t_data *data, t_philo *ph);
-int					eats_and_sleeps(t_data *data, t_philo *ph);
+int					eats(t_data *data, t_philo *ph);
+int					sleeps(t_data *data, t_philo *ph);
 int					does_he_die(t_data *data, t_philo *ph);
 
 #endif
