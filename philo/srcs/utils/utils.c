@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 23:53:14 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/11 19:00:27 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/12 11:03:40 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	ft_usleep(long utime)
 {
+	utime *= 1000;
 	usleep(utime - (utime / 4));
 	usleep(utime / 8);
 	usleep(utime / 8);

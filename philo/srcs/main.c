@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:26 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/11 17:45:04 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/12 11:10:16 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ static int	init_t_data(t_data *data, int args, char **av)
 		return (-1);
 	data->print_buf[40] = 0;
 	data->all_alive = 1;
+	data->start = 0;
 	return (0);
 }
 
@@ -96,7 +97,7 @@ int	main(int ac, char **av)
 		return (printf("Error : arguments must be only positive integers\n"));
 	if (init_t_data(data, ac - 1, av) == -1)
 		return (printf("t_data exit\n"));
-	if (init_pthread(data) == -1)
+	if (threading(data) == -1)
 		return (printf("pthread exit\n"));
 	return (0);
 }

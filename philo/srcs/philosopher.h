@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:57 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/11 17:44:15 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/12 11:10:11 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_data
 	pthread_t		death_thread;
 	int				all_alive;
 	pthread_mutex_t	print_mutex;
+	int				start;
 }	t_data;
 
 typedef struct s_arg
@@ -71,7 +72,7 @@ char				*ft_itoa(int n);
 
 //============THREADS============//
 
-int					init_pthread(t_data *data);
+int					threading(t_data *data);
 void				*philo_routine(void *ptr);
 // int					even_routine(t_data *data, t_philo *ph);
 // int					odd_routine(t_data *data, t_philo *ph);
