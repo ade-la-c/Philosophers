@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:26 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/12 11:10:16 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/12 17:02:08 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static int	init_t_philo(t_data *data)
 	int	i;
 
 	i = -1;
-	// data->ph = (t_philo *)malloc(sizeof(t_philo) * data->nb_of_philo);
 	data->ph = ft_calloc(data->nb_of_philo, sizeof(t_philo));
 	if (!data->ph)
 		return (-1);
@@ -74,7 +73,6 @@ static int	init_t_data(t_data *data, int args, char **av)
 	if (args == 5)
 		data->times_must_eat = ft_atoi(av[5]);
 	data->start_utime = get_utime(0);
-	// data->used_forks = ft_calloc(data->nb_of_philo, sizeof(int));
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_of_philo);
 	data->print_buf = ft_calloc(41, sizeof(char));
 	if (!data->start_utime || !data->forks || !data->print_buf
@@ -88,7 +86,7 @@ static int	init_t_data(t_data *data, int args, char **av)
 
 int	main(int ac, char **av)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = (t_data *)malloc(sizeof(t_data));
 	if (ac != 5 && ac != 6)
@@ -96,8 +94,11 @@ int	main(int ac, char **av)
 	else if (numeric(av) == -1)
 		return (printf("Error : arguments must be only positive integers\n"));
 	if (init_t_data(data, ac - 1, av) == -1)
-		return (printf("t_data exit\n"));
+		printf("t_data exit\n");
 	if (threading(data) == -1)
-		return (printf("pthread exit\n"));
+		printf("pthread exit\n");
+	system("leaks philo");
 	return (0);
 }
+
+//4 410 200 200

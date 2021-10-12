@@ -6,11 +6,22 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 23:53:14 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/12 11:03:40 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/12 16:31:15 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosopher.h"
+
+void	print(t_data *data, t_philo *ph, char *action)
+{
+	if ((data->times_must_eat <= ph->times_eated && data->times_must_eat != -1)
+		|| data->all_alive == 0)
+	{
+		pthread_mutex_unlock(&(data->print_mutex));
+		return ;
+	}
+	printf("%lu %d %s", get_utime(data->start_utime), ph->ph_id, action);
+}
 
 int	ft_usleep(long utime)
 {

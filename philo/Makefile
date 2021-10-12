@@ -6,19 +6,17 @@
 #    By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/05 19:35:02 by ade-la-c          #+#    #+#              #
-#    Updated: 2021/10/11 12:36:08 by ade-la-c         ###   ########.fr        #
+#    Updated: 2021/10/12 16:34:21 by ade-la-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME				= philosophers
+NAME				= philo
 
 SRCS				= srcs/main.c \
 					srcs/utils/utils.c \
 					srcs/utils/lib_utils.c \
 					srcs/actions.c \
 					srcs/threading.c \
-					srcs/print.c \
-					# srcs/routines.c \
 
 OBJS				= $(SRCS:.c=.o)
 
@@ -26,7 +24,7 @@ CC					= gcc
 
 RM					= rm -f
 
-CFLAGS				= -Wall -Werror -Wextra -pthread -I. -g -fsanitize=address
+CFLAGS				= -Wall -Werror -Wextra -pthread -I. #-g -fsanitize=address
 
 CL_GREY				= \033[38;2;128;128;128m
 
