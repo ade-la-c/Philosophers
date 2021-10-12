@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:26 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/12 18:03:13 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/12 23:28:16 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,6 @@ static int	init_t_philo(t_data *data)
 
 static int	init_t_data(t_data *data, int args, char **av)
 {
-	int	i;
-
-	i = -1;
 	data->nb_of_philo = ft_atoi(av[1]);
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threading.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 18:34:59 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/12 18:25:26 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/12 23:37:32 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	*philo_routine(void *ptr)
 	}
 	if (pthread_mutex_destroy(&(data->print_mutex)) == -1)
 		return (NULL);
-	free(ph);
+	free(ptr);
 	return (NULL);
 }
 

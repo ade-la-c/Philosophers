@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+         #
+#    By: root <root@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/05 19:35:02 by ade-la-c          #+#    #+#              #
-#    Updated: 2021/10/12 17:38:58 by ade-la-c         ###   ########.fr        #
+#    Updated: 2021/10/12 23:30:06 by root             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CC					= gcc -g3
 
 RM					= rm -f
 
-CFLAGS				= -Wall -Werror -Wextra -pthread -I. #-g -fsanitize=address
+CFLAGS				= -Wall -Werror -Wextra -pthread -I. -g -fsanitize=address
 
 CL_GREY				= \033[38;2;128;128;128m
 
