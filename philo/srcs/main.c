@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:26 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/12 17:02:08 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/12 18:03:13 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	numeric(char **av)
 		while (av[i][++j])
 			if (av[i][j] < '0' || av[i][j] > '9')
 				return (-1);
+		if (!ft_strlen(av[i]))
+			return (-1);
 		j = 0;
 		while (av[i][j])
 			j++;
@@ -74,14 +76,20 @@ static int	init_t_data(t_data *data, int args, char **av)
 		data->times_must_eat = ft_atoi(av[5]);
 	data->start_utime = get_utime(0);
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_of_philo);
-	data->print_buf = ft_calloc(41, sizeof(char));
-	if (!data->start_utime || !data->forks || !data->print_buf
-		|| init_t_philo(data) == -1)
+	if (!data->forks || init_t_philo(data) == -1)
 		return (-1);
-	data->print_buf[40] = 0;
 	data->all_alive = 1;
 	data->start = 0;
 	return (0);
+}
+
+static void	ft_free(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	free(&(data->forks[i]));
+	free(data);
 }
 
 int	main(int ac, char **av)
@@ -97,7 +105,7 @@ int	main(int ac, char **av)
 		printf("t_data exit\n");
 	if (threading(data) == -1)
 		printf("pthread exit\n");
-	system("leaks philo");
+	ft_free(data);
 	return (0);
 }
 

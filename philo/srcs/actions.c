@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:02:51 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/12 16:16:25 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/12 18:29:12 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	does_he_die(t_data *data, t_philo *ph)
 {
-	if (get_utime(data->start_utime) - ph->last_eat > data->time_to_die)
+	if (get_utime(data->start_utime) - ph->last_eat >= data->time_to_die)
 	{
 		ph->is_alive = 0;
 		pthread_mutex_lock(&(data->print_mutex));
