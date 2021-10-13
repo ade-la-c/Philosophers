@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 23:53:14 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/12 16:31:15 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/13 15:11:34 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print(t_data *data, t_philo *ph, char *action)
 {
-	if ((data->times_must_eat <= ph->times_eated && data->times_must_eat != -1)
+	if ((data->times_must_eat <= ph->times_eaten && data->times_must_eat != -1)
 		|| data->all_alive == 0)
 	{
 		pthread_mutex_unlock(&(data->print_mutex));
@@ -29,6 +29,7 @@ int	ft_usleep(long utime)
 	usleep(utime - (utime / 4));
 	usleep(utime / 8);
 	usleep(utime / 8);
+	usleep(utime % 4);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:02:51 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/12 18:29:12 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/13 15:11:34 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	sleeps(t_data *data, t_philo *ph)
 {
 	if (data->all_alive == 0)
 		return (-1);
-	ph->times_eated++;
+	ph->times_eaten++;
 	pthread_mutex_lock(&(data->print_mutex));
 	print(data, ph, "is sleeping\n");
 	pthread_mutex_unlock(&(data->print_mutex));

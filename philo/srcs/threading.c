@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threading.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 18:34:59 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/12 23:37:32 by root             ###   ########.fr       */
+/*   Updated: 2021/10/13 15:11:34 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*philo_routine(void *ptr)
 		usleep(600);
 	ph->last_eat = get_utime(data->start_utime);
 	if (even_or_odd(ph->ph_id) == 1)
-		ft_usleep(data->time_to_eat / 2);
+		ft_usleep(data->time_to_eat / 4);
 	while (1)
 	{
 		if (eats(data, ph) == -1)
@@ -67,7 +67,9 @@ int	threading(t_data *data)
 	int		j;
 
 	i = -1;
-	init_pthread(data);
+
+	if (init_pthread(data) == -1)
+		return (-1);
 	while (1)
 	{
 		i = -1;
@@ -78,7 +80,7 @@ int	threading(t_data *data)
 				return (-1);
 			if (data->times_must_eat != -1)
 			{
-				if (data->ph[i].times_eated >= data->times_must_eat)
+				if (data->ph[i].times_eaten >= data->times_must_eat)
 					j++;
 				if (j == data->nb_of_philo)
 					return (-1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:26 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/12 23:28:16 by root             ###   ########.fr       */
+/*   Updated: 2021/10/13 15:11:34 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	init_t_philo(t_data *data)
 		if (data->ph[i].ph_id == data->nb_of_philo)
 			data->ph[i].fork2_id = 0;
 		data->ph[i].is_alive = 1;
-		data->ph[i].times_eated = 0;
+		data->ph[i].times_eaten = 0;
 		if (pthread_mutex_init(&(data->forks[i]), NULL) == -1)
 			return (-1);
 	}

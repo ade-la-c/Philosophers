@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:57 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/12 18:24:14 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/13 15:34:48 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_philo
 	int					fork1_id;
 	int					fork2_id;
 	long				last_eat;
-	int					times_eated;
+	int					times_eaten;
 	int					is_alive;
 }	t_philo;
 
@@ -43,10 +43,10 @@ typedef struct s_data
 	pthread_mutex_t		*forks;
 	t_philo				*ph;
 	int					buf_len;
-	pthread_t			death_thread;
 	volatile int		all_alive;
-	pthread_mutex_t		print_mutex;
+	pthread_mutex_t		m_all_alive;
 	int					start;
+	pthread_mutex_t		print_mutex;
 }	t_data;
 
 typedef struct s_arg
