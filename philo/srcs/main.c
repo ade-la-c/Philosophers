@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:26 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/13 15:11:34 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/13 20:04:08 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ int	main(int ac, char **av)
 	else if (numeric(av) == -1)
 		return (printf("Error : arguments must be only positive integers\n"));
 	if (init_t_data(data, ac - 1, av) == -1)
-		printf("t_data exit\n");
+		return (-1);
 	if (threading(data) == -1)
-		printf("pthread exit\n");
+		return (-1);
 	ft_free(data);
 	return (0);
 }

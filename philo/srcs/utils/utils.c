@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 23:53:14 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/13 15:11:34 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/13 19:37:48 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ void	print(t_data *data, t_philo *ph, char *action)
 
 int	ft_usleep(long utime)
 {
-	utime *= 1000;
-	usleep(utime - (utime / 4));
-	usleep(utime / 8);
-	usleep(utime / 8);
-	usleep(utime % 4);
+	long	n;
+
+	n = get_utime(0);
+	while (get_utime(0) - n < utime)
+	{
+		usleep(500);
+	}
 	return (0);
 }
 
@@ -51,16 +53,4 @@ long	get_utime(long start_utime)
 	utime = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
 	utime -= start_utime;
 	return (utime);
-}
-
-int	ft_atoi(const char *str)
-{
-	int	i;
-	int	num;
-
-	i = 0;
-	num = 0;
-	while (str[i] >= '0' && str[i] <= '9')
-		num = num * 10 + (str[i++] - 48);
-	return (num);
 }

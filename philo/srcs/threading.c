@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 18:34:59 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/13 15:11:34 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/13 19:44:40 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*philo_routine(void *ptr)
 		usleep(600);
 	ph->last_eat = get_utime(data->start_utime);
 	if (even_or_odd(ph->ph_id) == 1)
-		ft_usleep(data->time_to_eat / 4);
+		ft_usleep(data->time_to_eat / 2);
 	while (1)
 	{
 		if (eats(data, ph) == -1)
@@ -36,7 +36,7 @@ void	*philo_routine(void *ptr)
 	}
 	if (pthread_mutex_destroy(&(data->print_mutex)) == -1)
 		return (NULL);
-	free(ptr);
+	// free(ptr);
 	return (NULL);
 }
 
@@ -67,7 +67,6 @@ int	threading(t_data *data)
 	int		j;
 
 	i = -1;
-
 	if (init_pthread(data) == -1)
 		return (-1);
 	while (1)

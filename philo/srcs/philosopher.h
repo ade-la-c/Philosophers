@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:57 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/13 15:34:48 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/13 17:37:49 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_data
 	t_philo				*ph;
 	int					buf_len;
 	volatile int		all_alive;
-	pthread_mutex_t		m_all_alive;
 	int					start;
 	pthread_mutex_t		print_mutex;
 }	t_data;
