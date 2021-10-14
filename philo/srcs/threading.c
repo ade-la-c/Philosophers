@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 18:34:59 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/14 14:25:28 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/14 15:03:35 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,10 @@ int	threading(t_data *data)
 		while (++i < data->nb_of_philo)
 		{
 			if (does_he_die(data, &(data->ph[i])) == 1)
-				return (-1);
+				return (0);
 			if (data->times_must_eat != -1)
 				if (stop_simulation(data, &(data->ph[i])))
-					return (-1);
+					return (0);
 		}
 		ft_usleep(1);
 	}

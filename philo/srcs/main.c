@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:26 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/14 14:20:39 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/14 15:03:45 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	init_t_data(t_data *data, int args, char **av)
 	data->time_to_sleep = ft_atoi(av[4]);
 	data->times_must_eat = -1;
 	if (args == 5)
-		data->times_must_eat = ft_atoi(av[5]);
+		data->times_must_eat = ft_atoi(av[5]) + 1;
 	data->start_utime = get_utime(0);
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_of_philo);
 	if (!data->forks)
