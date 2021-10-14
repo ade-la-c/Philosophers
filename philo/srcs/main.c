@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:26 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/14 15:03:45 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/14 17:19:04 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	numeric(char **av)
 		while (av[i][j])
 			j++;
 		if (j > 10)
+			return (-1);
+		if (ft_atoi(av[i]) == 0)
 			return (-1);
 	}
 	return (0);
@@ -56,7 +58,7 @@ static int	init_t_philo(t_data *data)
 			return (-1);
 	}
 	i = -1;
-	while (++i < data->nb_of_philo)
+	while (++i < data->nb_of_philo && data->nb_of_philo != 1)
 		if (data->ph[i].fork1_id == data->ph[i].fork2_id)
 			return (-1);
 	return (0);
@@ -86,11 +88,13 @@ int	main(int ac, char **av)
 {
 	t_data	*data;
 
-	data = (t_data *)malloc(sizeof(t_data));
 	if (ac != 5 && ac != 6)
 		return (printf("Error : wrong number of arguments\n"));
 	else if (numeric(av) == -1)
 		return (printf("Error : arguments must be only positive integers\n"));
+	data = (t_data *)malloc(sizeof(t_data));
+	if (!data)
+		return (-1);
 	if (init_t_data(data, ac - 1, av) == -1)
 		return (0);
 	if (threading(data) == -1)

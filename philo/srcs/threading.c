@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 18:34:59 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/14 15:03:35 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/14 17:32:10 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	*philo_routine(void *ptr)
 			break ;
 	}
 	pthread_mutex_unlock(&(data->print_mutex));
-	if (pthread_mutex_destroy(&(data->print_mutex)) == -1)
+	if (pthread_mutex_destroy(&(data->print_mutex)) == -1
+		|| pthread_mutex_destroy(&(data->forks[ph->fork1_id])) == -1)
 		return (NULL);
 	return (NULL);
 }
@@ -64,7 +65,6 @@ int	init_pthread(t_data *data)
 int	threading(t_data *data)
 {
 	int		i;
-	int		j;
 
 	i = -1;
 	if (init_pthread(data) == -1)
@@ -72,7 +72,6 @@ int	threading(t_data *data)
 	while (1)
 	{
 		i = -1;
-		j = 0;
 		while (++i < data->nb_of_philo)
 		{
 			if (does_he_die(data, &(data->ph[i])) == 1)
