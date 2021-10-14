@@ -1,0 +1,41 @@
+USE :
+
+./philosophers time_to_die time_to_eat time_to_sleep [nbr_of_eats]
+
+particular cases :
+
+death :
+- 1 philosopher always dies
+- time_to_die < time_to_eat = death
+- time_to_die < time_to_sleep = death
+- time_to_die < time_to_eat + time_to_sleep = death
+
+max eating possiblilties
+
+if (nbr_philo == pair) {
+	eat(impair(first, last))
+	eat(pair(first, last))
+}
+else if (nbr_philo == impair) {
+	eat(impair(first, last - 1))
+	eat(pair(first, last - 1))
+	first++
+	last = first ou un truc comme ça
+}
+
+calculate proportional frequence of eating needs
+
+(time_to_die * nbr_of_philo) / ((time_to_eat + time_to_sleep) * nbr_of_philo)
+
+-> protect against max_int + 1
+
+get timestamp : timeofday(tv_usec, NULL)
+
+-> mettre fourchettes dans data->fourchettes[nb_of_forks]
+|->	reference a chaque fourchette dans ph->fork_id
+
+
+
+Visualizer for defense : https://nafuka11.github.io/philosophers-visualizer/
+
+->free & death mutex

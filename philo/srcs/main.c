@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:26 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/13 20:04:08 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/14 14:20:39 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,20 +73,13 @@ static int	init_t_data(t_data *data, int args, char **av)
 		data->times_must_eat = ft_atoi(av[5]);
 	data->start_utime = get_utime(0);
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_of_philo);
-	if (!data->forks || init_t_philo(data) == -1)
+	if (!data->forks)
+		return (-1);
+	if (init_t_philo(data) == -1)
 		return (-1);
 	data->all_alive = 1;
 	data->start = 0;
 	return (0);
-}
-
-static void	ft_free(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	free(&(data->forks[i]));
-	free(data);
 }
 
 int	main(int ac, char **av)
@@ -99,11 +92,9 @@ int	main(int ac, char **av)
 	else if (numeric(av) == -1)
 		return (printf("Error : arguments must be only positive integers\n"));
 	if (init_t_data(data, ac - 1, av) == -1)
-		return (-1);
+		return (0);
 	if (threading(data) == -1)
-		return (-1);
-	ft_free(data);
+		return (0);
+	free(data);
 	return (0);
 }
-
-//4 410 200 200

@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:57 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/13 17:37:49 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/14 14:15:01 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_arg
 
 //=============UTILS=============//
 
+int					stop_simulation(t_data *data, t_philo *ph);
 int					ft_usleep(long utime);
 void				*ft_calloc(size_t count, size_t size);
 void				print(t_data *data, t_philo *ph, char *action);

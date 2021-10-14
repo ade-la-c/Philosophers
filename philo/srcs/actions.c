@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:02:51 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/13 15:11:34 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/14 14:26:15 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 int	does_he_die(t_data *data, t_philo *ph)
 {
+	if (stop_simulation(data, ph))
+		return (0);
 	if (get_utime(data->start_utime) - ph->last_eat >= data->time_to_die)
 	{
 		ph->is_alive = 0;
 		pthread_mutex_lock(&(data->print_mutex));
 		print(data, ph, "died\n");
-		pthread_mutex_unlock(&(data->print_mutex));
 		data->all_alive = 0;
 		return (1);
 	}
@@ -36,7 +37,7 @@ int	thinks(t_data *data, t_philo *ph)
 
 int	sleeps(t_data *data, t_philo *ph)
 {
-	if (data->all_alive == 0)
+	if (stop_simulation(data, ph))
 		return (-1);
 	ph->times_eaten++;
 	pthread_mutex_lock(&(data->print_mutex));
@@ -48,15 +49,15 @@ int	sleeps(t_data *data, t_philo *ph)
 
 int	eats(t_data *data, t_philo *ph)
 {
-	if (data->all_alive == 0)
+	if (stop_simulation(data, ph))
 		return (-1);
 	pthread_mutex_lock(&(data->forks[ph->fork1_id]));
 	pthread_mutex_lock(&(data->print_mutex));
-	print(data, ph, "has taken a fork (1)\n");
+	print(data, ph, "has taken a fork\n");
 	pthread_mutex_unlock(&(data->print_mutex));
 	pthread_mutex_lock(&(data->forks[ph->fork2_id]));
 	pthread_mutex_lock(&(data->print_mutex));
-	print(data, ph, "has taken a fork (2)\n");
+	print(data, ph, "has taken a fork\n");
 	print(data, ph, "is eating\n");
 	pthread_mutex_unlock(&(data->print_mutex));
 	ph->last_eat = get_utime(data->start_utime);

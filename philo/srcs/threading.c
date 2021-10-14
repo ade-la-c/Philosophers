@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 18:34:59 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/13 19:44:40 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/14 14:25:28 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	*philo_routine(void *ptr)
 		if (thinks(data, ph) == -1)
 			break ;
 	}
+	pthread_mutex_unlock(&(data->print_mutex));
 	if (pthread_mutex_destroy(&(data->print_mutex)) == -1)
 		return (NULL);
-	// free(ptr);
 	return (NULL);
 }
 
@@ -78,12 +78,8 @@ int	threading(t_data *data)
 			if (does_he_die(data, &(data->ph[i])) == 1)
 				return (-1);
 			if (data->times_must_eat != -1)
-			{
-				if (data->ph[i].times_eaten >= data->times_must_eat)
-					j++;
-				if (j == data->nb_of_philo)
+				if (stop_simulation(data, &(data->ph[i])))
 					return (-1);
-			}
 		}
 		ft_usleep(1);
 	}

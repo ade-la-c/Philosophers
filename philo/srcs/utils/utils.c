@@ -6,21 +6,29 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 23:53:14 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/13 19:37:48 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/14 14:20:47 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosopher.h"
 
-void	print(t_data *data, t_philo *ph, char *action)
+int	stop_simulation(t_data *data, t_philo *ph)
 {
 	if ((data->times_must_eat <= ph->times_eaten && data->times_must_eat != -1)
 		|| data->all_alive == 0)
+		return (1);
+	return (0);
+}
+
+void	print(t_data *data, t_philo *ph, char *action)
+{
+	if (stop_simulation(data, ph))
 	{
-		pthread_mutex_unlock(&(data->print_mutex));
+		pthread_mutex_lock(&(data->print_mutex));
 		return ;
 	}
-	printf("%lu %d %s", get_utime(data->start_utime), ph->ph_id, action);
+	else
+		printf("%lu %d %s", get_utime(data->start_utime), ph->ph_id, action);
 }
 
 int	ft_usleep(long utime)
