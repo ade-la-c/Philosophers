@@ -6,7 +6,7 @@
 /*   By: ade-la-c <ade-la-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:20:26 by ade-la-c          #+#    #+#             */
-/*   Updated: 2021/10/15 15:47:33 by ade-la-c         ###   ########.fr       */
+/*   Updated: 2021/10/17 17:00:29 by ade-la-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int	init_t_philo(t_data *data)
 
 	i = -1;
 	data->ph = ft_calloc(data->nb_of_philo, sizeof(t_philo));
+	printf("~~~~%p\n", &(data->ph));
 	if (!data->ph)
 		return (-1);
 	while (++i < data->nb_of_philo)
@@ -84,6 +85,13 @@ static int	init_t_data(t_data *data, int args, char **av)
 	return (0);
 }
 
+void	ft_free(t_data *data)
+{
+	free(data->forks);
+	free(data->ph);
+	free(data);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	*data;
@@ -98,7 +106,10 @@ int	main(int ac, char **av)
 	if (init_t_data(data, ac - 1, av) == -1)
 		return (0);
 	if (threading(data) == -1)
+	{
+		ft_free(data);
 		return (0);
-	free(data);
+	}
+	ft_free(data);
 	return (0);
 }
